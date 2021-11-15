@@ -2,9 +2,7 @@
 #include <limits.h>
 using namespace std;
 
-/*
-Swaps two integer values
-*/
+
 void swap(int *a, int *b)
 {
   int temp = *a;
@@ -12,9 +10,7 @@ void swap(int *a, int *b)
   *b = temp;
 }
 
-/*
-Constructor for our MinHeap implementation
-*/
+
 MinHeap::MinHeap(int cap)
 {
   currentSize = 0;
@@ -22,42 +18,28 @@ MinHeap::MinHeap(int cap)
   heapArr = new int[capacity];
 }
 
-/*
-Finds the parent of a node, given its index.
-*/
 int MinHeap::parent(int index)
 {
   return (index-1)/2;
 }
 
-/*
-Returns the left child of a node.
-*/
 int MinHeap::leftChild(int index)
 {
   return ((2*index) + 1);
 }
 
-/*
-Returns the right child of a node.
-*/
+
 int MinHeap::rightChild(int index)
 {
   return ((2*index) + 2);
 }
 
-/*
-Returns the smallest element from the heap.
-*/
+
 int MinHeap::getMin()
 {
   return heapArr[0];
 }
 
-/*
-When an element is removed/deleted. This method make sures the array
-satisfies the heap property.
-*/
 void MinHeap::heapify(int i)
 {
   int l = leftChild(i);
@@ -78,9 +60,6 @@ void MinHeap::heapify(int i)
   }
 } 
 
-/*
-Inserts an element into the heap by maintaining the heap property.
-*/
 void MinHeap::insertElement(int value)
 {
   if(currentSize == capacity)
@@ -100,9 +79,6 @@ void MinHeap::insertElement(int value)
     }
 }
 
-/*
-Prints the elements in the heap
-*/
 void MinHeap::print()
 {
   int iter = 0;
@@ -114,7 +90,6 @@ void MinHeap::print()
   cout<<endl;
 }
 
-// Method to remove minimum element (or root) from min heap
 int MinHeap::extractMin()
 {
   if (currentSize <= 0)

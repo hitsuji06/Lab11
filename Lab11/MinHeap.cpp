@@ -63,11 +63,20 @@ void MinHeap::heapify(int i)
   int l = leftChild(i);
   int r = rightChild(i);
   int smallest = i;
-
-  //TODO finsh the heapify function
-
-
-}
+  if ( r<currentSize && heapArr[i]>heapArr[r])
+  {
+    smallest=r;
+  }
+  if (l > currentSize && heapArr[i]>heapArr[r])
+  {
+    smallest=l;
+  }  
+  if (smallest != i)
+  {
+    swap(&heapArr[i],&heapArr[smallest]);
+    heapify(smallest);
+  }
+} 
 
 /*
 Inserts an element into the heap by maintaining the heap property.
@@ -109,19 +118,21 @@ void MinHeap::print()
 int MinHeap::extractMin()
 {
   if (currentSize <= 0)
-      return INT_MAX;
-
+  {
+    return INT_MAX;
+  }
   if (currentSize == 1)
   {
-      currentSize--;
-      return heapArr[0];
+    currentSize--;
+    return heapArr[0];
   }
-  //TODO finsh the function
-
+  int starter=heapArr[0];
+  heapArr[0]= heapArr[currentSize-1];
+  currentSize=currentSize-1;
+  heapify(0);
+  return starter;
 }
-
-// This function deletes a key
-void MinHeap::deleteKey(int key)
+void MinHeap::deleteKey(int i)
 {
 
 }

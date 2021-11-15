@@ -100,12 +100,15 @@ int MinHeap::extractMin()
   {
     currentSize--;
     return heapArr[0];
+  }else
+  {
+    int starter=heapArr[0];
+    heapArr[0]= heapArr[currentSize-1];
+    currentSize=currentSize-1;
+    heapify(0);
+    return starter;
   }
-  int starter=heapArr[0];
-  heapArr[0]= heapArr[currentSize-1];
-  currentSize=currentSize-1;
-  heapify(0);
-  return starter;
+
 }
 void MinHeap::deleteKey(int i)
 {
